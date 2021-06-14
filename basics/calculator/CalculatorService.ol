@@ -5,7 +5,13 @@ from CalculatorInterfaceModule import CalculatorInterface
 // once we imported the contract 
 // define the service
 service CalculatorService {
-    // define the ports (inputs) before
+    // define the exeution mode before, exists three modes
+    // single (default), this means the service will serve only one request and then it's stop
+    // concurrent, this means the service will serve multiple and concurrent requests
+    // sequential, this means the service will serve multiple requests but, one by one
+    execution { concurrent }
+
+    // define the ports (inputs)
     inputPort CalculatorPort {
         location: "socket://localhost:8000"
         protocol: http { format = "json" }
@@ -38,5 +44,10 @@ service CalculatorService {
         [ div(request)(response) {
             response = request.dividend / request.divisor
         }]
+
+        // exit
+        [ shutdown()() ]{
+            exit
+        }
     }
 }
