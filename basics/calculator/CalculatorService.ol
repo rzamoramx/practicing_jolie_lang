@@ -1,6 +1,6 @@
 
 // import interface
-from CalculatorInterface import CalculatorInterface
+from CalculatorInterfaceModule import CalculatorInterface
 
 // once we imported the contract 
 // define the service
@@ -16,8 +16,8 @@ service CalculatorService {
     main {
         // sum operator (aka method)
         [ sum(request)(response) {
-            for (term in request.terms) {
-                response = response + term
+            for (t in request.term) {
+                response = response + t
             }
         }]
 
@@ -29,8 +29,8 @@ service CalculatorService {
         // multiplication
         [ mul(request)(response) {
             response = 1
-            for (factor in request.factors) {
-                response = response * factor
+            for (f in request.factor) {
+                response = response * f
             }
         }]
         

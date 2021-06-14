@@ -5,7 +5,7 @@ type SumRequest: void {
     // in Jolie the node of data structure can be a vector, in this 
     // case, term is a vector of ints that minimum occurrences is one and 
     // maximum occurences infinite
-    terms[1,*]: int
+    term[1,*]: int
 }
 
 // in Jolie the data type structures are a tree of nodes
@@ -16,7 +16,7 @@ type SubRequest: void {
 }
 
 type MulRequest: void {
-    factors*: double
+    factor*: double
 }
 
 type DivRequest: void {
